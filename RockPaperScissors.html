@@ -8,6 +8,12 @@
 <body>
 <script>
 
+function playGame() {
+
+let humanScore = 0;
+let computerScore = 0;
+
+
         function getComputerChoice() {
             const i = Math.floor(Math.random() * 3) + 1
             if (i === 1) {
@@ -25,11 +31,65 @@
 
 
         function getHumanChoice() {
-            const choice = prompt("Enter rock,paper or scissors!")
+            const choice = prompt("Enter rock,paper or scissors!").toLowerCase();
             return choice
         }
 
-        console.log(getHumanChoice())
+        
+
+
+
+
+        function playRound(humanChoice,computerChoice) {
+            if (humanChoice === computerChoice) {
+                console.log("Tie! Play Again")
+                return;
+            } else if (humanChoice === "rock" && computerChoice === "paper") {
+                computerScore++
+                console.log("Computer Wins, paper beats rock")
+                return;
+            
+            } else if (humanChoice === "paper" && computerChoice === "rock") {
+                humanScore++
+                console.log("Human Wins, paper beats rock")
+                return
+            
+            } else if (humanChoice === "scissors" && computerChoice === "paper") {
+                humanScore++
+                console.log("Human Wins,scissors beats paper")
+                return;
+            } else if (humanChoice === "paper" && computerChoice === "scissors") {
+                console.log("Computer wins, scissors beats paper")
+                computerScore++
+                return;
+            } else if (humanChoice === "rock" && computerChoice === "scissors") {  
+                console.log("Human Wins, rock beats scissors")
+                humanScore++        
+                return;
+            } else if (humanChoice === "scissors" && computerChoice === "rock") {
+                computerScore++
+                console.log("Computer Wins, rock beats scissors")
+                return;
+             }
+
+}
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+
+
+
+console.log("Final Score:", "Human", humanScore, "Computer", computerScore);
+
+
+}
+
+
+
+
+playGame();
 
 
 </script>
